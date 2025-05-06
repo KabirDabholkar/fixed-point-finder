@@ -123,9 +123,10 @@ class FixedPointFinderTorch(FixedPointFinderBase):
         scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
             optimizer, 
             mode='min',
-            factor=.95,
-            patience=2,
-            cooldown=0)
+            factor=self.lr_factor,
+            patience=self.lr_patience,
+            cooldown=self.lr_cooldown
+        )
 
         iter_count = 1
         iter_learning_rate = init_lr
